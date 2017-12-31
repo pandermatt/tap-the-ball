@@ -70,7 +70,6 @@ h1 {
     font-size: 16px;
 
     position: absolute;
-    top: 40vh;
     right: 20vw;
     left: 20vw;
 
@@ -88,22 +87,44 @@ h1 {
     background-color: #4caf50;
 }
 
+#start-button{
+    top: 40vh;
+}
+
+#score-button{
+    top: calc(40vh + 80px);
+}
+
+#score-button:empty{
+    opacity: 0;
+}
+
+.badge{
+    position: fixed;
+    padding: 5px 10px;
+    border-radius: 25px;
+}
+
 .score {
     background: #ffffffb3;
-    position: fixed;
     bottom: 0;
-    padding: 5px 10px;
     right: 10px;
-    border-radius: 25px;
 }
 
 .height {
     background: #ffffffb3;
-    position: fixed;
     top: 0;
-    padding: 5px 10px;
     left: 10px;
-    border-radius: 25px;
+}
+
+.warning{
+    background: #ffc48cb8;
+    top: 0;
+    right: 10px;
+}
+
+.warning:empty{
+    background: transparent;
 }
 
 footer {

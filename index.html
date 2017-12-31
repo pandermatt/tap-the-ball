@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="offline.manifest.php">
+<!--<html lang="en" manifest="offline.appcache">-->
 <meta content="yes" name="apple-mobile-web-app-capable">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="author" content="Pascal Andermatt">
@@ -27,10 +27,12 @@
 <div>
     <h1>TAP THE BALL</h1>
     <a class="button" id="start-button">Start</a>
+    <a class="button score-button" id="score-button"></a>
 </div>
 
-<p class="height">0 m</p>
-<p class="score">Score: 0</p>
+<p class="badge height">0 m</p>
+<p class="badge warning"></p>
+<p class="badge score">Score: 0</p>
 
 <div class="area">
     <div id="start" class="ball">Tap</div>
@@ -41,9 +43,9 @@
     </div>
 </footer>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-<script src='https://unpkg.com/popmotion/dist/popmotion.global.min.js'></script>
-<script src='https://unpkg.com/sweetalert2@7.3.0/dist/sweetalert2.all.js'></script>
+<script src='js/jquery.min.js'></script>
+<script src='js/popmotion.global.min.js'></script>
+<script src='js/sweetalert2.all.js'></script>
 <script src="js/index.js"></script>
 </body>
 </html>

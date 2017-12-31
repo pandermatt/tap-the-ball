@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# v1.0 : 10-08-2014
+ 
+CACHE:
+# pages
+index.html
+ 
+# styles & scripts
+css/style.css
+js/index.js
+js/jquery.min.js
+js/popmotion.global.min.js
+js/sweetalert2.all.js
+
+# images
+favicon.ico
+favicon-16x16.png

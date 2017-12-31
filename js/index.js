@@ -14,6 +14,10 @@ var pipe = transform.pipe,
 var ball = document.querySelector('.ball');
 var score = document.querySelector('.score');
 var height = document.querySelector('.height');
+var warningTop = document.querySelector('.warning');
+var scoreButton = document.querySelector('.score-button');
+var highscore = localStorage['highscore'] || 0;
+var won = false;
 
 (function ($) {
     $.fn.goTo = function () {
@@ -24,6 +28,10 @@ var height = document.querySelector('.height');
     }
 })(jQuery);
 
+$( document ).ready(function() {
+    scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
+})
+
 function showPopup() {
     swal({
         title: 'Welcome',
@@ -33,10 +41,23 @@ function showPopup() {
         if (result.value) {
         $('#start').goTo();
     }
-})
-}
+    })}
+
+function showHighscorePopup() {
+    var info = 'You never reached top :(';
+    if(localStorage['highscore-count']){
+        info = 'You reached the top with ' + localStorage['highscore-count'];
+    }
+    
+    swal({
+        title: 'Highscore',
+        type: 'info',
+        html: 'Your Highscore ' + highscore + '<br>' + info,
+        confirmButtonText: 'Great!'
+    })}
 
 document.getElementById("start-button").onclick = showPopup;
+document.getElementById("score-button").onclick = showHighscorePopup;
 
 var ballStyler = styler(ball);
 var ballY = value(0, function (v) {
@@ -92,18 +113,42 @@ var checkFail = function checkFail() {
             to: {borderWidth: 30, borderColor: 'rgb(255, 28, 104, 0)'}
         }).start(ballBorder);
 
+        won = false;
         ball.innerHTML = 'Tap';
     }
 };
 
 var checkWin = function checkWin() {
+    var userTop = 3000 - $(window).scrollTop();
+    var userBottom = 3000 - $(window).height() - $(window).scrollTop();
+    var ballHeight = Math.ceil(ballY.get() * -1);
     if (ballY.get() > 0) {
-        height.innerHTML = 0 + " m";
-    } else {
-        height.innerHTML = Math.ceil(ballY.get() * -1) + " m";
+        ballHeight = 0;
     }
 
-    if (ballY.get() < -3000) {
+    height.innerHTML = ballHeight + " m";
+
+    if (userTop < 2600) {
+        if (ballHeight > userTop) {
+            warningTop.innerHTML = "GO UP";
+        } else if (ballHeight < (userBottom - 100)) {
+            warningTop.innerHTML = "GO DOWN";
+        } else {
+            warningTop.innerHTML = "";
+        }
+    } else {
+        warningTop.innerHTML = "";
+    }
+
+    if(highscore < ballHeight){
+        highscore = ballHeight;
+        localStorage['highscore'] = highscore;
+        scoreButton.innerHTML = 'Highscore: ' + ballHeight + ' m';
+    }
+
+    if (ballY.get() < -3000 && won == false) {
+        won = true;
+        localStorage['highscore-count'] = count;
         swal(
             'You reached the end',
             'Score: ' + count,
