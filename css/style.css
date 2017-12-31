@@ -17,6 +17,8 @@ body {
 }
 
 .ball {
+    cursor: pointer;
+
     font-size: 18px;
     font-weight: 700;
 
@@ -85,6 +87,7 @@ h1 {
     color: white;
     border: none;
     background-color: #4caf50;
+    cursor: pointer;
 }
 
 #start-button{
@@ -125,6 +128,19 @@ h1 {
 
 .warning:empty{
     background: transparent;
+}
+
+.about{
+    background: #4caf4f;
+    position: absolute;
+    right: 10px;
+    top: -5px;
+    font-size: 22px;
+    border-radius: 50%;
+    height: 27px;
+    width: 27px;
+    text-align: center;
+    cursor: pointer;
 }
 
 footer {
