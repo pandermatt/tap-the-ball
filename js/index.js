@@ -12,6 +12,8 @@ var pipe = transform.pipe,
 
 
 var ball = document.querySelector('.ball');
+var score = document.querySelector('.score');
+var height = document.querySelector('.height');
 
 (function($) {
     $.fn.goTo = function() {
@@ -95,7 +97,13 @@ var checkFail = function checkFail() {
 };
 
 var checkWin = function checkWin() {
-  if(ballY.get() < -3000){
+  if(ballY.get() > 0) {
+      height.innerHTML = 0 + " m";
+  }else{
+      height.innerHTML = Math.ceil(ballY.get()*-1) + " m";
+  }
+
+    if(ballY.get() < -3000){
     swal(
       'You reached the end',
       'Score: ' + count,
@@ -118,6 +126,7 @@ listen(ball, 'mousedown touchstart').start(function (e) {
   e.preventDefault();
   count++;
   ball.innerHTML = count;
+  score.innerHTML = "Score: " + count;
 
   isFalling = true;
   ballScale.stop();

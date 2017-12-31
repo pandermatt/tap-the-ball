@@ -88,3 +88,21 @@ h1 {
     border: none;
     background-color: #4caf50;
 }
+
+.score {
+    background: #ffffffb3;
+    position: fixed;
+    bottom: 0;
+    padding: 5px 10px;
+    right: 10px;
+    border-radius: 25px;
+}
+
+.height {
+    background: #ffffffb3;
+    position: fixed;
+    top: 0;
+    padding: 5px 10px;
+    left: 10px;
+    border-radius: 25px;
+}
