@@ -1,4 +1,4 @@
-# BallJump
+# Tap The Ball
 
 ![demo](demo/home.png)
 

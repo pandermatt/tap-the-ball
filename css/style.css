@@ -41,7 +41,6 @@ body {
     width: 100vw;
     height: 3000px;
 
-    border-bottom: 7px solid #4caf50;
     background: -moz-linear-gradient(271deg, rgba(0, 0, 0, 1) 0%, rgba(2, 30, 70, 1) 15%, rgba(23, 56, 105, 1) 34%, rgba(45, 79, 153, 1) 56%, rgba(91, 148, 229, 1) 79%, rgba(181, 213, 248, 1) 100%); /* ff3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(15%, rgba(2, 30, 70, 1)), color-stop(34%, rgba(23, 56, 105, 1)), color-stop(56%, rgba(45, 79, 153, 1)), color-stop(79%, rgba(91, 148, 229, 1)), color-stop(100%, rgba(181, 213, 248, 1))); /* safari4+,chrome */
     background: -webkit-linear-gradient(271deg, rgba(0, 0, 0, 1) 0%, rgba(2, 30, 70, 1) 15%, rgba(23, 56, 105, 1) 34%, rgba(45, 79, 153, 1) 56%, rgba(91, 148, 229, 1) 79%, rgba(181, 213, 248, 1) 100%); /* safari5.1+,chrome10+ */
@@ -105,4 +104,20 @@ h1 {
     padding: 5px 10px;
     left: 10px;
     border-radius: 25px;
+}
+
+footer {
+    height: 59px;
+    background-color: #4caf50;
+}
+
+footer > div {
+    padding-top: 17px;
+    padding-left: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }
