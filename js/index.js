@@ -38,7 +38,7 @@ $( document ).ready(function() {
 function showPopup() {
     swal({
         title: 'Welcome',
-        text: 'The Game is simple, just keep pressing the ball',
+        text: 'The Game is simple, just keep pressing the ball... But you also need to scroll',
         confirmButtonText: 'Start Game'
     }).then((result) => {
         if (result.value) {
@@ -151,7 +151,10 @@ var checkWin = function checkWin() {
 
     if (ballY.get() < -3000 && won == false) {
         won = true;
-        localStorage['highscore-count'] = count;
+        bestCount = localStorage['highscore-count'] || 1000;
+        if(count < bestCount) {
+            localStorage['highscore-count'] = count;
+        }
         swal(
             'You reached the end',
             'Score: ' + count,
