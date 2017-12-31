@@ -28,8 +28,11 @@ var won = false;
     }
 })(jQuery);
 
+
 $( document ).ready(function() {
-    scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
+    if(highscore != 0) {
+        scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
+    }
 })
 
 function showPopup() {
@@ -44,15 +47,15 @@ function showPopup() {
     })}
 
 function showHighscorePopup() {
-    var info = 'You never reached top :(';
+    var info = 'You never reached the top :(';
     if(localStorage['highscore-count']){
-        info = 'You reached the top with ' + localStorage['highscore-count'];
+        info = 'You reached the top with ' + localStorage['highscore-count'] + ' taps';
     }
-    
+
     swal({
         title: 'Highscore',
         type: 'info',
-        html: 'Your Highscore ' + highscore + '<br>' + info,
+        html: 'Your Highscore: ' + highscore + ' m <br>' + info,
         confirmButtonText: 'Great!'
     })}
 
