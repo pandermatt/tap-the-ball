@@ -133,9 +133,9 @@ var checkWin = function checkWin() {
 
     if (userTop < 2600) {
         if (ballHeight > userTop) {
-            warningTop.innerHTML = "GO UP";
+            warningTop.innerHTML = "SCROLL UP";
         } else if (ballHeight < (userBottom - 100)) {
-            warningTop.innerHTML = "GO DOWN";
+            warningTop.innerHTML = "SCROLL DOWN";
         } else {
             warningTop.innerHTML = "";
         }
