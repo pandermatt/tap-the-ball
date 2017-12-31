@@ -1,5 +1,7 @@
 # BallJump
 
+![demo](demo/home.png)
+
 ## Play
 
 <http://pandermatt.ch/BallJump/>
