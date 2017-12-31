@@ -4,7 +4,7 @@
 
 ## Play
 
-<http://pandermatt.ch/BallJump/>
+<http://pandermatt.ch/tap-the-ball>
 
 ## Sources
 
