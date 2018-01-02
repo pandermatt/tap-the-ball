@@ -89,7 +89,7 @@ function switchMode() {
 function showAboutPopup() {
     swal(
         'About: Tap The Ball',
-        'Version 1.2.0<br>by Pascal Andermatt',
+        'Version 1.2.1<br>by Pascal Andermatt',
         'question'
     )}
 
@@ -194,7 +194,6 @@ var checkWin = function checkWin() {
 
     if(highscore < ballHeight){
         highscore = ballHeight;
-        console.log(highscore);
         localStorage['highscore' + mode] = highscore;
         scoreButton.innerHTML = 'Highscore: ' + ballHeight + ' m';
     }
