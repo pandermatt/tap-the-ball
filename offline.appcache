@@ -6,7 +6,7 @@ CACHE:
 index.html
  
 # styles & scripts
-css/style.css
+css/index.css
 js/index.js
 js/jquery.min.js
 js/popmotion.global.min.js
