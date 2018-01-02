@@ -44,7 +44,14 @@ function showPopup() {
         if (result.value) {
         $('#start').goTo();
     }
-    })}
+})}
+
+function showAboutPopup() {
+    swal(
+        'About: Tap The Ball',
+        'Version 1.1.3<br>by Pascal Andermatt',
+        'question'
+    )}
 
 function showHighscorePopup() {
     var info = 'You never reached the top :(';
@@ -61,6 +68,7 @@ function showHighscorePopup() {
 
 document.getElementById("start-button").onclick = showPopup;
 document.getElementById("score-button").onclick = showHighscorePopup;
+document.getElementById("about-button").onclick = showAboutPopup;
 
 var ballStyler = styler(ball);
 var ballY = value(0, function (v) {
