@@ -15,9 +15,12 @@ var ball = document.querySelector('.ball');
 var score = document.querySelector('.score');
 var height = document.querySelector('.height');
 var warningTop = document.querySelector('.warning');
-var scoreButton = document.querySelector('.score-button');
-var highscore = localStorage['highscore'] || 0;
+var scoreButton = document.querySelector('#score-button');
+var modeButton = document.querySelector('#mode-button');
+var area = document.querySelector('.area');
+var highscore = localStorage['highscore0'] || 0;
 var won = false;
+var mode = 0;
 
 (function ($) {
     $.fn.goTo = function () {
@@ -35,7 +38,7 @@ $( document ).ready(function() {
     }
 })
 
-function showPopup() {
+function showStartPopup() {
     swal({
         title: 'Welcome',
         text: 'The Game is simple, just keep pressing the ball... But you also need to scroll',
@@ -46,27 +49,61 @@ function showPopup() {
     }
 })}
 
+function switchMode() {
+    mode = mode + 1;
+    if(mode > 2){
+        mode = 0;
+    }
+    switch(mode) {
+        case 0:
+            modeText = 'Easy';
+            highscore = localStorage['highscore0'] || 0;
+            gravity.setAcceleration(2500);
+            area.style.background = 'linear-gradient(179deg, rgba(0, 0, 0, 1) 0%, rgba(2, 30, 70, 1) 15%, rgba(23, 56, 105, 1) 34%, rgba(45, 79, 153, 1) 56%, rgba(91, 148, 229, 1) 79%, rgba(181, 213, 248, 1) 100%)';
+            break;
+        case 1:
+            modeText = 'Hard';
+            highscore = localStorage['highscore1'] || 0;
+            gravity.setAcceleration(4000);
+            area.style.background = 'linear-gradient(200deg, #cc5333, #23074d)';
+            break;
+        case 2:
+            modeText = 'Impossible';
+            highscore = localStorage['highscore2'] || 0;
+            gravity.setAcceleration(6000);
+            area.style.background = 'linear-gradient(170deg, #ea384d, #000)';
+            break;
+    }
+    if(highscore > 0) {
+        scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
+    }else{
+        scoreButton.innerHTML = '';
+    }
+    modeButton.innerHTML = 'Mode: ' + modeText;
+}
+
 function showAboutPopup() {
     swal(
         'About: Tap The Ball',
-        'Version 1.1.3<br>by Pascal Andermatt',
+        'Version 1.2.0<br>by Pascal Andermatt',
         'question'
     )}
 
 function showHighscorePopup() {
     var info = 'You never reached the top :(';
-    if(localStorage['highscore-count']){
-        info = 'You reached the top with ' + localStorage['highscore-count'] + ' taps';
+    if(localStorage['highscore-count' + mode]){
+        info = 'You reached the top with ' + localStorage['highscore-count' + mode] + ' taps';
     }
 
     swal({
         title: 'Highscore',
         type: 'info',
-        html: 'Your Highscore: ' + highscore + ' m <br>' + info,
+        html: 'Your Highscore: ' + localStorage['highscore' + mode] + ' m <br>' + info,
         confirmButtonText: 'Great!'
     })}
 
-document.getElementById("start-button").onclick = showPopup;
+document.getElementById("start-button").onclick = showStartPopup;
+document.getElementById("mode-button").onclick = switchMode;
 document.getElementById("score-button").onclick = showHighscorePopup;
 document.getElementById("about-button").onclick = showAboutPopup;
 
@@ -153,15 +190,16 @@ var checkWin = function checkWin() {
 
     if(highscore < ballHeight){
         highscore = ballHeight;
-        localStorage['highscore'] = highscore;
+        console.log(highscore);
+        localStorage['highscore' + mode] = highscore;
         scoreButton.innerHTML = 'Highscore: ' + ballHeight + ' m';
     }
 
     if (ballY.get() < -3000 && won == false) {
         won = true;
-        bestCount = localStorage['highscore-count'] || 1000;
+        bestCount = localStorage['highscore-count' + mode] || 1000;
         if(count < bestCount) {
-            localStorage['highscore-count'] = count;
+            localStorage['highscore-count' + mode] = count;
         }
         swal(
             'You reached the end',

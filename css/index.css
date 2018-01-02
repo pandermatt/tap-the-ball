@@ -102,6 +102,10 @@ h1 {
     opacity: 0;
 }
 
+#mode-button{
+    top: calc(40vh + 160px);
+}
+
 .badge{
     position: fixed;
     padding: 5px 10px;
