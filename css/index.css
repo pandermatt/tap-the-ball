@@ -99,7 +99,7 @@ h1 {
 }
 
 #score-button:empty{
-    opacity: 0;
+    display: none;
 }
 
 #mode-button{

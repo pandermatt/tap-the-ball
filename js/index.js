@@ -20,7 +20,8 @@ var modeButton = document.querySelector('#mode-button');
 var area = document.querySelector('.area');
 var highscore = localStorage['highscore0'] || 0;
 var won = false;
-var mode = 0;
+var modeText;
+var mode = localStorage['mode'] || 0;
 
 (function ($) {
     $.fn.goTo = function () {
@@ -33,6 +34,8 @@ var mode = 0;
 
 
 $( document ).ready(function() {
+    mode = mode - 1;
+    switchMode();
     if(highscore != 0) {
         scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
     }
@@ -65,7 +68,7 @@ function switchMode() {
             modeText = 'Hard';
             highscore = localStorage['highscore1'] || 0;
             gravity.setAcceleration(4000);
-            area.style.background = 'linear-gradient(200deg, #cc5333, #23074d)';
+            area.style.background = 'linear-gradient(200deg, #0f9b0f, #23074d)';
             break;
         case 2:
             modeText = 'Impossible';
@@ -79,6 +82,7 @@ function switchMode() {
     }else{
         scoreButton.innerHTML = '';
     }
+    localStorage['mode'] = mode;
     modeButton.innerHTML = 'Mode: ' + modeText;
 }
 
