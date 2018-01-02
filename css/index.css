@@ -31,7 +31,7 @@ body {
 
     color: white;
     border-radius: 50%;
-    background: #9b65de;
+    background-color: #9b65de;
 
     justify-content: center;
     align-items: center;
@@ -109,33 +109,33 @@ h1 {
 }
 
 .score {
-    background: #ffffffb3;
+    background-color: #fff;
     bottom: 0;
     right: 10px;
 }
 
 .height {
-    background: #ffffffb3;
+    background-color: #fff;
     top: 0;
     left: 10px;
 }
 
 .warning{
-    background: #ffc48cb8;
+    background-color: red;
     top: 0;
     right: 10px;
 }
 
 .warning:empty{
-    background: transparent;
+    background-color: transparent;
 }
 
 .about{
-    background: #4caf4f;
+    background-color: #4caf4f;
     position: absolute;
     right: 10px;
     top: -5px;
-    font-size: 22px;
+    font-size: 24px;
     border-radius: 50%;
     height: 27px;
     width: 27px;
