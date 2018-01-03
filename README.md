@@ -2,6 +2,10 @@
 
 ## Play
 
+GET IT ON THE PLAY STORE 🎉
+
+[! Play Store](google-play-badge.png)
+
 <http://pandermatt.ch/tap-the-ball>
 
 ## Sources
