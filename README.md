@@ -4,7 +4,7 @@
 
 GET IT ON THE PLAY STORE 🎉
 
-<a href="https://play.google.com/store/apps/details?id=ch.pandermatt.taptheball"><img src="google-play-badge.png" alt="Play Store" style="width: 100px;"/></a>
+<a href="https://play.google.com/store/apps/details?id=ch.pandermatt.taptheball"><img src="google-play-badge.png" alt="Play Store" width="200" /></a>
 
 ANDROID: <https://play.google.com/store/apps/details?id=ch.pandermatt.taptheball>
 
