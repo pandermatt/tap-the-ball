@@ -4,9 +4,11 @@
 
 GET IT ON THE PLAY STORE 🎉
 
-[! Play Store](google-play-badge.png)
+<a href="https://play.google.com/store/apps/details?id=ch.pandermatt.taptheball"><img src="google-play-badge.png" alt="Play Store" style="width: 100px;"/></a>
 
-<http://pandermatt.ch/tap-the-ball>
+ANDROID: <https://play.google.com/store/apps/details?id=ch.pandermatt.taptheball>
+
+IOS: (add to Homescreen) <http://pandermatt.ch/tap-the-ball>
 
 ## Sources
 
