@@ -14,6 +14,8 @@ body {
     color: #222;
 
     justify-content: center;
+
+    overflow-x: hidden;
 }
 
 .ball {

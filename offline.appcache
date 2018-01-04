@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v1.2.1 : 02-01-2018
+# v1.2.2 : 04-01-2018
  
 CACHE:
 # pages
@@ -13,5 +13,6 @@ js/popmotion.global.min.js
 js/sweetalert2.all.js
 
 # images
+BMC-btn-logo.svg
 favicon.ico
 favicon-16x16.png
