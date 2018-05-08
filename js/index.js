@@ -24,21 +24,27 @@ var modeText;
 var mode = localStorage['mode'] || 0;
 
 var player1 = new Tone.Player({
-    "url" : "audio/Andreas_Theme.mp3",
-    "loop" : true
+    "url": "audio/Andreas_Theme.mp3",
+    "loop": true
 }).toMaster();
 
 var player2 = new Tone.Player({
-    "url" : "audio/Miami_Nights_-_Extended_Theme.mp3",
-    "loop" : true
+    "url": "audio/Miami_Nights_-_Extended_Theme.mp3",
+    "loop": true
 }).toMaster();
 
 var player3 = new Tone.Player({
-    "url" : "audio/Jet_Fueled_Vixen.mp3",
-    "loop" : true
+    "url": "audio/Jet_Fueled_Vixen.mp3",
+    "loop": true
 }).toMaster();
 
 var players = [player1, player2, player3];
+
+var synth = new Tone.PolySynth(6, Tone.Synth, {
+    "oscillator": {
+        "partials": [0, 2, 3, 4],
+    }
+}).toMaster();
 
 (function ($) {
     $.fn.goTo = function () {
@@ -50,10 +56,10 @@ var players = [player1, player2, player3];
 })(jQuery);
 
 
-$( document ).ready(function() {
+$(document).ready(function () {
     mode = mode - 1;
     switchMode();
-    if(highscore !== 0) {
+    if (highscore !== 0) {
         scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
     }
 });
@@ -65,20 +71,21 @@ function showStartPopup() {
         confirmButtonText: 'Start Game'
     }).then((result) => {
         if (result.value) {
-        $('#start').goTo();
-    }
-})}
+            $('#start').goTo();
+        }
+    })
+}
 
 function switchMode() {
-    if(typeof players[mode] !== "undefined") {
+    if (typeof players[mode] !== "undefined") {
         players[mode].stop();
     }
 
     mode = mode + 1;
-    if(mode > 2){
+    if (mode > 2) {
         mode = 0;
     }
-    switch(mode) {
+    switch (mode) {
         case 0:
             modeText = 'Easy';
             highscore = localStorage['highscore0'] || 0;
@@ -99,15 +106,15 @@ function switchMode() {
             break;
     }
 
-    if(highscore > 0) {
+    if (highscore > 0) {
         scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
-    }else{
+    } else {
         scoreButton.innerHTML = '';
     }
 
     players[mode].autostart = true;
 
-    if(players[mode].loaded) {
+    if (players[mode].loaded) {
         players[mode].start();
     }
 
@@ -119,14 +126,19 @@ function showAboutPopup() {
     swal({
         title: 'About: Tap The Ball',
         html: 'Version 1.2.2<br>by Pascal Andermatt <br><br>' +
-        '<style>.bmc-button img{vertical-align: middle !important;}.bmc-button{text-decoration: none; !important;display:inline-block !important;padding:5px 10px !important;color:#FFFFFF !important;background-color:#000000 !important;border-radius: 3px !important;border: 1px solid transparent !important;font-size: 26px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;-webkit-transition: 0.3s all linear !important;transition: 0.3s all linear !important;margin: 0 auto !important;font-family:"Cookie", cursive !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0 4px 16px 0 rgba(190, 190, 190,.45) !important;box-shadow: 0 4px 16px 0 rgba(190, 190, 190,.45) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/pandermatt"><img src="BMC-btn-logo.svg" alt="BMC logo"><span style="margin-left:5px">Buy me a coffee</span></a>',
+        '<style>.bmc-button img{vertical-align: middle !important;}.bmc-button{text-decoration: none; !important;display:inline-block !important;padding:5px 10px !important;color:#FFFFFF !important;background-color:#000000 !important;border-radius: 3px !important;border: 1px solid transparent !important;font-size: 26px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;-webkit-transition: 0.3s all linear !important;transition: 0.3s all linear !important;margin: 0 auto !important;font-family:"Cookie", cursive !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0 4px 16px 0 rgba(190, 190, 190,.45) !important;box-shadow: 0 4px 16px 0 rgba(190, 190, 190,.45) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/pandermatt"><img src="BMC-btn-logo.svg" alt="BMC logo"><span style="margin-left:5px">Buy me a coffee</span></a>' +
+        '<br><br><b>Music</b><p><i>"Andreas Theme", "Jet Fueled Vixen", "Miami Nights - Extended Theme"</i><br>' +
+        'Kevin MacLeod (<a href="http://incompetech.com" target="_blank">incompetech.com</a>)<br>' +
+        'Licensed under Creative Commons: By Attribution 3.0<br>' +
+        '<a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">http://creativecommons.org/licenses/by/3.0/</a></>',
         type: 'question',
         confirmButtonText: 'Close'
-    })}
+    })
+}
 
 function showHighscorePopup() {
     var info = 'You never reached the top :(';
-    if(localStorage['highscore-count' + mode]){
+    if (localStorage['highscore-count' + mode]) {
         info = 'You reached the top with ' + localStorage['highscore-count' + mode] + ' taps';
     }
 
@@ -135,7 +147,8 @@ function showHighscorePopup() {
         type: 'info',
         html: 'Your Highscore: ' + localStorage['highscore' + mode] + ' m <br>' + info,
         confirmButtonText: 'Great!'
-    })}
+    })
+}
 
 document.getElementById("start-button").onclick = showStartPopup;
 document.getElementById("mode-button").onclick = switchMode;
@@ -223,7 +236,7 @@ var checkWin = function checkWin() {
         warningTop.innerHTML = "";
     }
 
-    if(highscore < ballHeight){
+    if (highscore < ballHeight) {
         highscore = ballHeight;
         localStorage['highscore' + mode] = highscore;
         scoreButton.innerHTML = 'Highscore: ' + ballHeight + ' m';
@@ -232,7 +245,7 @@ var checkWin = function checkWin() {
     if (ballY.get() < -3000 && won === false) {
         won = true;
         bestCount = localStorage['highscore-count' + mode] || 1000;
-        if(count < bestCount) {
+        if (count < bestCount) {
             localStorage['highscore-count' + mode] = count;
         }
         swal(
@@ -255,6 +268,9 @@ var gravity = physics({
 
 listen(ball, 'mousedown touchstart').start(function (e) {
     e.preventDefault();
+    var tone = 100 + (count * 5);
+    synth.triggerAttack(tone);
+
     count++;
     ball.innerHTML = count;
     score.innerHTML = "Score: " + count;
@@ -269,4 +285,8 @@ listen(ball, 'mousedown touchstart').start(function (e) {
         from: {borderWidth: 0, borderColor: 'rgb(20, 215, 144, 1)'},
         to: {borderWidth: 30, borderColor: 'rgb(20, 215, 144, 0)'}
     }).start(ballBorder);
+
+    setTimeout(function () {
+        synth.triggerRelease(tone);
+    }, 50);
 });
