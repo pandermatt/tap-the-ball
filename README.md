@@ -24,3 +24,4 @@ http://creativecommons.org/licenses/by/3.0/
 
 - [SweetAlert2](https://limonte.github.io/sweetalert2/)
 - [Popmotion](https://popmotion.io/)
+- [Tone.js](https://tonejs.github.io/)
