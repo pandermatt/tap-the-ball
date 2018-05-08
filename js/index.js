@@ -23,6 +23,23 @@ var won = false;
 var modeText;
 var mode = localStorage['mode'] || 0;
 
+var player1 = new Tone.Player({
+    "url" : "audio/Andreas_Theme.mp3",
+    "loop" : true
+}).toMaster();
+
+var player2 = new Tone.Player({
+    "url" : "audio/Miami_Nights_-_Extended_Theme.mp3",
+    "loop" : true
+}).toMaster();
+
+var player3 = new Tone.Player({
+    "url" : "audio/Jet_Fueled_Vixen.mp3",
+    "loop" : true
+}).toMaster();
+
+var players = [player1, player2, player3];
+
 (function ($) {
     $.fn.goTo = function () {
         $('html, body').animate({
@@ -36,10 +53,10 @@ var mode = localStorage['mode'] || 0;
 $( document ).ready(function() {
     mode = mode - 1;
     switchMode();
-    if(highscore != 0) {
+    if(highscore !== 0) {
         scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
     }
-})
+});
 
 function showStartPopup() {
     swal({
@@ -53,6 +70,10 @@ function showStartPopup() {
 })}
 
 function switchMode() {
+    if(typeof players[mode] !== "undefined") {
+        players[mode].stop();
+    }
+
     mode = mode + 1;
     if(mode > 2){
         mode = 0;
@@ -77,11 +98,19 @@ function switchMode() {
             area.style.background = 'linear-gradient(170deg, #ea384d, #000)';
             break;
     }
+
     if(highscore > 0) {
         scoreButton.innerHTML = 'Highscore: ' + highscore + ' m';
     }else{
         scoreButton.innerHTML = '';
     }
+
+    players[mode].autostart = true;
+
+    if(players[mode].loaded) {
+        players[mode].start();
+    }
+
     localStorage['mode'] = mode;
     modeButton.innerHTML = 'Mode: ' + modeText;
 }
@@ -200,7 +229,7 @@ var checkWin = function checkWin() {
         scoreButton.innerHTML = 'Highscore: ' + ballHeight + ' m';
     }
 
-    if (ballY.get() < -3000 && won == false) {
+    if (ballY.get() < -3000 && won === false) {
         won = true;
         bestCount = localStorage['highscore-count' + mode] || 1000;
         if(count < bestCount) {

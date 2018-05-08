@@ -8,7 +8,14 @@ GET IT ON THE PLAY STORE 🎉
 
 ANDROID: <https://play.google.com/store/apps/details?id=ch.pandermatt.taptheball>
 
-IOS: (add to Homescreen) <http://pandermatt.ch/tap-the-ball>
+IOS: (add to Homescreen) <https://pandermatt.ch/tap-the-ball>
+
+## Music
+
+"Andreas Theme", "Jet Fueled Vixen", "Miami Nights - Extended Theme"
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
 
 ## Sources
 
