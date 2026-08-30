@@ -1,3 +1,5 @@
+![Tap The Ball](banner.webp)
+
 # Tap The Ball
 
 A browser game built over the 2017/18 new-year break: tap a ball to keep it climbing against a
